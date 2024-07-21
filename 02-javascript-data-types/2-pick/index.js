@@ -5,5 +5,13 @@
  * @returns {object} - returns the new object
  */
 export const pick = (obj, ...fields) => {
-
+    const properties = Object.entries(obj);
+    const filteredProperties = properties.filter(([key]) => fields.includes(key));
+    const newObject = filteredProperties.reduce((acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+    }, 
+    {});
+    
+    return newObject;
 };
